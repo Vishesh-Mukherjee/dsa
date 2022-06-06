@@ -21,6 +21,16 @@ class Solution {
 			tail = NULL;
 		}
 
+		void print_linked() {
+			Node *temp = head;
+			cout << "Linked list: ";
+			while (temp) {
+				cout << temp -> data << " ";
+				temp = temp -> next;
+			}
+			cout << endl;
+		}	
+
 		bool isPalindromeStack() {
 			stack<int> s;
 			Node  *temp = head;
@@ -57,6 +67,7 @@ class Solution {
 				tail = node;
 			} else {
 				tail -> next = node;
+				tail = node;
 			}
 		}
 };
@@ -68,6 +79,7 @@ int main() {
 	o1.addNode(3);
 	o1.addNode(4);
 
+	o1.print_linked();
 	cout << o1.isPalindromeStack() << endl;
 	Node *temp = o1.getHead();
 	cout << o1.isPalindromeRecursion(&temp, temp) << endl;
@@ -78,6 +90,7 @@ int main() {
 	o2.addNode(2);
 	o2.addNode(1);
 
+	o2.print_linked();
 	cout << o2.isPalindromeStack() << endl;
 	temp = o2.getHead();
 	cout << o2.isPalindromeRecursion(&temp, temp) << endl;
