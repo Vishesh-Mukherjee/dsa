@@ -33,22 +33,22 @@ class Solution {
 
 		void inOrder(Node *root) {
 			if (root == NULL) return;
-			if (root -> left) inOrder(root -> left);
+			inOrder(root -> left);
 			cout << root -> data << endl;
-			if (root -> right) inOrder(root -> right);
+			inOrder(root -> right);
 		}
 
 		void preOrder(Node *root) {
 			if (root == NULL) return;
 			cout << root -> data << endl;
-			if (root -> left) preOrder(root -> left);
-			if (root -> right) preOrder(root -> right);
+			preOrder(root -> left);
+			preOrder(root -> right);
 		}
 
 		void postOrder(Node *root) {
 			if (root == NULL) return;
-			if (root -> left) postOrder(root -> left);
-			if (root -> right) postOrder(root -> right);
+			postOrder(root -> left);
+			postOrder(root -> right);
 			cout << root -> data << endl;
 		}
 };
