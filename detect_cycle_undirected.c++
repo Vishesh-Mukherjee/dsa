@@ -6,28 +6,41 @@ using namespace std;
 class Solution {
   public:
     // Function to detect cycle in an undirected graph.
+    
+    void printStack(stack<pair<int, int>> s) {
+        while (!s.empty()) {
+            pair<int, int> p = s.top();
+            s.pop();
+            cout << "(" << p.first << ", " << p.second << ")" << endl;;
+        }
+        cout << endl;
+    }
+    
     bool isCycleUtil(int V, vector<int> adj[], int start) {
         stack<pair<int, int>> s;
         vector<bool> visited(V);
         s.push({start, -1});
         visited[start] = true;
         while (!s.empty()) {
+            //printStack(s);
             pair<int, int> p = s.top();
             s.pop();
+            //visited[p.first] = true;
             for (int i:adj[p.first]) {
                 if (!visited[i]) {
                     s.push({i, p.first});
                     visited[i] = true;
-                } else if (i != p.second) return true;
+                } else if (i != p.second) {
+                    // << i << " : " << p.second << endl;
+                    return true;
+                }
             }
         }
         return false;
     }
     
     bool isCycle(int V, vector<int> adj[]) {
-        for (int i = 0; i < V; i ++) {
-            if (isCycleUtil(V, adj, i)) return true;
-        }   
+        for (int i = 0; i < V; i ++) if (isCycleUtil(V, adj, i)) return true;
         return false;
     }
 };
